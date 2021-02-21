@@ -3,6 +3,7 @@ from mask import *
 
 
 def split_patch(img_path, mask_path, patch_img_dir, patch_mask_dir, patch_size=128, overlap=0.1):
+	# For test set, overlap=0, this's for stitching patch.
 	overlap_px = math.ceil(patch_size * overlap)
 
 	img = cv2.cvtColor(cv2.imread(img_path), cv2.COLOR_BGR2RGB)
