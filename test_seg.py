@@ -12,7 +12,6 @@ from model import AutoEncoder, weights_init, weights_init_seg
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0, 1"
 
-
 class SegDataset(Dataset):
     def __init__(self, image_dir):
         self.image_dir = image_dir
@@ -38,7 +37,6 @@ mask_output_dir = './Segmentation/patch_output'
 data_dir = '/projects/patho1/Kechun/NestDetection/dataset/baseline/patch/val'
 dataset = SegDataset(data_dir)
 dataloader = DataLoader(dataset, batch_size=64, shuffle=False, num_workers=16)
-
 
 def test_model(model):
     # Iterate over data.
