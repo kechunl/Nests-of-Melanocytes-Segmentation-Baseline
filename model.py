@@ -60,6 +60,9 @@ class AutoEncoder(nn.Module):
             nn.Conv2d(32, 3, 3, stride=1, padding=1),  # N, 3, 128, 128
             nn.ReLU(True)
         )
+        # self.last_layer = nn.Sequential(
+        #     nn.Conv2d(32, 1, 3, stride=1, padding=1),  # N, 1, 128, 128
+        #     nn.Sigmoid())
 
     def forward(self, x):
         x = self.encoder(x)
