@@ -7,7 +7,7 @@ from torch.utils.data.dataset import Dataset
 from torchvision import transforms
 from torch.utils.tensorboard import SummaryWriter
 import os, glob, cv2, time, copy, math
-from model import AutoEncoder, weights_init, weights_init_seg
+from model import AutoEncoder_Seg, weights_init
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0, 1"
 
@@ -35,10 +35,10 @@ class SegDataset(Dataset):
         return len(self.image_list)
 
 
-num_epochs = 100
+num_epochs = 200
 batch_size = {'train': 256, 'val': 64}
 BASE_LR = 5e-4
-RESUME = './Reconstruction/checkpoint/AutoEncoder_Reconstruction.pth'   # path of checkpoint to resume training from
+RESUME = '/projects/patho1/Kechun/NestDetection/baseline/Reconstruction/checkpoint/AutoEncoder_Reconstruction.pth'   # path of checkpoint to resume training from
 print_freq = {'train': 400, 'val': 1000}
 FINETUNE = False
 
@@ -55,7 +55,7 @@ def train_model(model, criterion, optimizer, lr_scheduler, start_epoch=0, num_ep
     since = time.time()
 
     best_model = model
-    best_mse = 1e6
+    best_bce = 1e6
 
     for epoch in range(start_epoch, num_epochs):
         print('Epoch {}/{}'.format(epoch, num_epochs - 1))
@@ -79,10 +79,12 @@ def train_model(model, criterion, optimizer, lr_scheduler, start_epoch=0, num_ep
                 if torch.cuda.is_available():
                     try:
                         inputs = Variable(inputs.float().cuda())
+                        labels = Variable(labels.float().cuda())
                     except:
                         print('Exception in wrapping data in Variable! idx:{}'.format(idx))
                 else:
                     inputs = Variable(inputs)
+                    labels = Variable(labels)
 
                 # Set gradient to zero to delete history of computations in previous epoch. Track operations so that differentiation can be done automatically.
                 optimizer.zero_grad()
@@ -108,11 +110,11 @@ def train_model(model, criterion, optimizer, lr_scheduler, start_epoch=0, num_ep
             # deep copy the model
             if phase == 'val':
                 val_writer.add_scalar('Loss', epoch_loss, epoch)
-                if epoch_loss < best_mse:
-                    best_mse = epoch_loss
+                if epoch_loss < best_bce:
+                    best_bce = epoch_loss
                     best_model = copy.deepcopy(model)
                     best_epoch = epoch
-                    print('new best mse = ', best_mse)
+                    print('new best bce = ', best_bce)
                     # Save Model
                     save_files = {'model': best_model.state_dict(),
                                   'optimizer': optimizer.state_dict(),
@@ -127,38 +129,42 @@ def train_model(model, criterion, optimizer, lr_scheduler, start_epoch=0, num_ep
     time_elapsed = time.time() - since
     print('Training complete in {:.0f}m {:.0f}s'.format(
         time_elapsed // 60, time_elapsed % 60))
-    print('Best val MSE: {:4f}'.format(best_mse))
+    print('Best val BCE: {:4f}'.format(best_bce))
     return
 
 
 # Model
-model = AutoEncoder()
+model = AutoEncoder_Seg()
+model.apply(weights_init)
 model = nn.DataParallel(model)
 model.cuda()
 
-# criterion, optimizer, lr_scheduler
-criterion = nn.BCELoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=BASE_LR, weight_decay=1e-5)
-lr_scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.95)
-
 # check RESUME != None
 assert RESUME is not None
+
 checkpoint = torch.load(RESUME)
-model.load_state_dict(checkpoint['model'])
-optimizer.load_state_dict(checkpoint['optimizer'])
-lr_scheduler.load_state_dict(checkpoint['lr_scheduler'])
 if task in RESUME:  # resume from a pretrained segmentation AE
+    model.load_state_dict(checkpoint['model'])
     start_epoch = checkpoint['epoch'] + 1
     print('The training process from epoch {}...'.format(start_epoch))
 else:   # resume from a reconstruction AE
     start_epoch = 0
-    # change AE: last_layer
-    model.last_layer = nn.Sequential(
-            nn.Conv2d(32, 1, 3, stride=1, padding=1),  # N, 1, 128, 128
-            nn.Sigmoid())
-    # initialize decoder and last_layer weight
-    model.apply(weights_init_seg)
+    # only load encoder's param
+    model_dict = model.state_dict()
+    # 1. filter out unnecessary keys
+    pretrained_dict = {k: v for k, v in checkpoint['model'].items() if k in model_dict}
+    # 2. overwrite entries in the existing state dict
+    model_dict.update(pretrained_dict)
+    model.load_state_dict(model_dict)
 
+
+# criterion, optimizer, lr_scheduler
+criterion = nn.BCELoss()
+optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=BASE_LR, weight_decay=1e-5)
+lr_scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.98)
+if task in RESUME:
+    optimizer.load_state_dict(checkpoint['optimizer'])
+    lr_scheduler.load_state_dict(checkpoint['lr_scheduler'])
 
 # if not fine-tuning, freeze encoder's param
 if not FINETUNE:

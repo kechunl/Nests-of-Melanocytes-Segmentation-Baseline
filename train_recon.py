@@ -7,7 +7,8 @@ from torch.utils.data.dataset import Dataset
 from torchvision import transforms
 from torchvision.utils import save_image
 from torch.utils.tensorboard import SummaryWriter
-import os, glob, cv2, time, copy, math
+import os, glob, cv2, time, copy, math, random
+import numpy as np
 from model import AutoEncoder, weights_init
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0, 1"
@@ -36,7 +37,7 @@ class ReconDataset(Dataset):
 num_epochs = 100
 batch_size = {'train': 256, 'val': 64}
 BASE_LR = 1e-3
-RESUME = None   # path of checkpoint to resume training from
+RESUME = '/projects/patho1/Kechun/NestDetection/baseline/Reconstruction/checkpoint/AutoEncoder_Reconstruction.pth'  # path of checkpoint to resume training from
 print_freq = {'train': 400, 'val': 1000}
 
 model_save_dir = os.path.join('.', task, 'checkpoint')
@@ -138,6 +139,7 @@ model.cuda()
 criterion = nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=BASE_LR, weight_decay=1e-5)
 lr_scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.95)
+# lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.5)
 
 if RESUME != None:
     checkpoint = torch.load(RESUME)
@@ -151,3 +153,22 @@ else:
 
 train_model(model, criterion, optimizer, lr_scheduler, start_epoch=start_epoch, num_epochs=num_epochs)
 
+# # Plot examples
+# for idx, data in enumerate(dset_loaders['val']):
+#     if idx > 2:
+#         break
+#     inputs = data
+#     if torch.cuda.is_available():
+#         try:
+#             inputs = Variable(inputs.float().cuda())
+#         except:
+#             print('Exception in wrapping data in Variable! idx:{}'.format(idx))
+#     else:
+#         inputs = Variable(inputs)
+#
+#     outputs = model(inputs).to("cpu").data
+#     inputs = data
+#
+#     for i in range(inputs.shape[0]):
+#         save_image(inputs[i], os.path.join(model_save_dir, 'Example_{}.jpg'.format(i + idx*32)))
+#         save_image(outputs[i], os.path.join(model_save_dir, 'Example_recon_{}.jpg'.format(i + idx*32)))

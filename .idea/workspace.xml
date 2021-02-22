@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c75685c-1104-4699-b885-1c578c5a22d8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/test_seg.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_seg.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_recon.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_recon.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_seg.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_seg.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +41,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.patch">
+  <component name="RunManager" selected="Python.train_seg">
     <configuration name="patch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Nest Detection Baseline" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -83,8 +86,54 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="train_recon" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Nest Detection Baseline" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_recon.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train_seg" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Nest Detection Baseline" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_seg.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.train_seg" />
+        <item itemvalue="Python.train_recon" />
         <item itemvalue="Python.patch" />
         <item itemvalue="Python.train_net" />
       </list>
@@ -116,72 +165,97 @@
       <screen x="1440" y="25" width="2560" height="1415" />
     </state>
     <state x="2320" y="396" key="#Deployment/0.25.1440.800/1440.25.2560.1415@1440.25.2560.1415" timestamp="1613608163535" />
-    <state x="2018" y="509" key="#xdebugger.evaluate" timestamp="1613882724832">
+    <state x="2018" y="509" key="#xdebugger.evaluate" timestamp="1614026992778">
       <screen x="1440" y="0" width="2560" height="1440" />
     </state>
-    <state x="2018" y="509" key="#xdebugger.evaluate/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613882724832" />
-    <state width="2518" height="384" key="GridCell.Tab.0.bottom" timestamp="1613889860781">
+    <state x="2018" y="509" key="#xdebugger.evaluate/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614026992778" />
+    <state width="2518" height="384" key="GridCell.Tab.0.bottom" timestamp="1614030478604">
       <screen x="1440" y="0" width="2560" height="1440" />
     </state>
-    <state width="2518" height="384" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613889860781" />
+    <state width="2518" height="384" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614030478604" />
     <state width="1398" height="322" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1613875013882" />
-    <state width="2518" height="322" key="GridCell.Tab.0.bottom/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613871386926" />
+    <state width="2518" height="384" key="GridCell.Tab.0.bottom/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614027687144" />
+    <state width="2518" height="210" key="GridCell.Tab.0.bottom/0.25.1440.800/1440.25.2560.1415@1440.25.2560.1415" timestamp="1614029285987" />
     <state width="1398" height="138" key="GridCell.Tab.0.bottom/0.25.1440.800@0.25.1440.800" timestamp="1613861904890" />
-    <state width="2518" height="384" key="GridCell.Tab.0.center" timestamp="1613889860780">
+    <state width="2518" height="384" key="GridCell.Tab.0.center" timestamp="1614030478601">
       <screen x="1440" y="0" width="2560" height="1440" />
     </state>
-    <state width="2518" height="384" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613889860780" />
+    <state width="2518" height="384" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614030478601" />
     <state width="1398" height="322" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1613875013881" />
-    <state width="2518" height="322" key="GridCell.Tab.0.center/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613871386925" />
+    <state width="2518" height="384" key="GridCell.Tab.0.center/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614027687142" />
+    <state width="2518" height="210" key="GridCell.Tab.0.center/0.25.1440.800/1440.25.2560.1415@1440.25.2560.1415" timestamp="1614029285986" />
     <state width="1398" height="138" key="GridCell.Tab.0.center/0.25.1440.800@0.25.1440.800" timestamp="1613861904889" />
-    <state width="2518" height="384" key="GridCell.Tab.0.left" timestamp="1613889860779">
+    <state width="2518" height="384" key="GridCell.Tab.0.left" timestamp="1614030478599">
       <screen x="1440" y="0" width="2560" height="1440" />
     </state>
-    <state width="2518" height="384" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613889860779" />
+    <state width="2518" height="384" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614030478599" />
     <state width="1398" height="322" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1613875013880" />
-    <state width="2518" height="322" key="GridCell.Tab.0.left/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613871386924" />
+    <state width="2518" height="384" key="GridCell.Tab.0.left/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614027687140" />
+    <state width="2518" height="210" key="GridCell.Tab.0.left/0.25.1440.800/1440.25.2560.1415@1440.25.2560.1415" timestamp="1614029285986" />
     <state width="1398" height="138" key="GridCell.Tab.0.left/0.25.1440.800@0.25.1440.800" timestamp="1613861904889" />
-    <state width="2518" height="384" key="GridCell.Tab.0.right" timestamp="1613889860781">
+    <state width="2518" height="384" key="GridCell.Tab.0.right" timestamp="1614030478603">
       <screen x="1440" y="0" width="2560" height="1440" />
     </state>
-    <state width="2518" height="384" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613889860781" />
+    <state width="2518" height="384" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614030478603" />
     <state width="1398" height="322" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1613875013882" />
-    <state width="2518" height="322" key="GridCell.Tab.0.right/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613871386925" />
+    <state width="2518" height="384" key="GridCell.Tab.0.right/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614027687143" />
+    <state width="2518" height="210" key="GridCell.Tab.0.right/0.25.1440.800/1440.25.2560.1415@1440.25.2560.1415" timestamp="1614029285987" />
     <state width="1398" height="138" key="GridCell.Tab.0.right/0.25.1440.800@0.25.1440.800" timestamp="1613861904890" />
-    <state width="2518" height="384" key="GridCell.Tab.1.bottom" timestamp="1613889860784">
+    <state width="2518" height="384" key="GridCell.Tab.1.bottom" timestamp="1614030386283">
       <screen x="1440" y="0" width="2560" height="1440" />
     </state>
-    <state width="2518" height="384" key="GridCell.Tab.1.bottom/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613889860784" />
+    <state width="2518" height="384" key="GridCell.Tab.1.bottom/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614030386283" />
     <state width="1398" height="322" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1613874032953" />
-    <state width="2518" height="322" key="GridCell.Tab.1.bottom/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613871386929" />
+    <state width="2518" height="384" key="GridCell.Tab.1.bottom/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614027687146" />
+    <state width="2518" height="384" key="GridCell.Tab.1.bottom/0.25.1440.800/1440.25.2560.1415@1440.25.2560.1415" timestamp="1614029285974" />
     <state width="1398" height="138" key="GridCell.Tab.1.bottom/0.25.1440.800@0.25.1440.800" timestamp="1613861904891" />
-    <state width="2518" height="384" key="GridCell.Tab.1.center" timestamp="1613889860783">
+    <state width="2518" height="384" key="GridCell.Tab.1.center" timestamp="1614030386282">
       <screen x="1440" y="0" width="2560" height="1440" />
     </state>
-    <state width="2518" height="384" key="GridCell.Tab.1.center/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613889860783" />
+    <state width="2518" height="384" key="GridCell.Tab.1.center/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614030386282" />
     <state width="1398" height="322" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1613874032952" />
-    <state width="2518" height="322" key="GridCell.Tab.1.center/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613871386927" />
+    <state width="2518" height="384" key="GridCell.Tab.1.center/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614027687145" />
+    <state width="2518" height="384" key="GridCell.Tab.1.center/0.25.1440.800/1440.25.2560.1415@1440.25.2560.1415" timestamp="1614029285973" />
     <state width="1398" height="138" key="GridCell.Tab.1.center/0.25.1440.800@0.25.1440.800" timestamp="1613861904890" />
-    <state width="2518" height="384" key="GridCell.Tab.1.left" timestamp="1613889860782">
+    <state width="2518" height="384" key="GridCell.Tab.1.left" timestamp="1614030386281">
       <screen x="1440" y="0" width="2560" height="1440" />
     </state>
-    <state width="2518" height="384" key="GridCell.Tab.1.left/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613889860782" />
+    <state width="2518" height="384" key="GridCell.Tab.1.left/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614030386281" />
     <state width="1398" height="322" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1613874032951" />
-    <state width="2518" height="322" key="GridCell.Tab.1.left/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613871386927" />
+    <state width="2518" height="384" key="GridCell.Tab.1.left/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614027687144" />
+    <state width="2518" height="384" key="GridCell.Tab.1.left/0.25.1440.800/1440.25.2560.1415@1440.25.2560.1415" timestamp="1614029285972" />
     <state width="1398" height="138" key="GridCell.Tab.1.left/0.25.1440.800@0.25.1440.800" timestamp="1613861904890" />
-    <state width="2518" height="384" key="GridCell.Tab.1.right" timestamp="1613889860783">
+    <state width="2518" height="384" key="GridCell.Tab.1.right" timestamp="1614030386282">
       <screen x="1440" y="0" width="2560" height="1440" />
     </state>
-    <state width="2518" height="384" key="GridCell.Tab.1.right/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613889860783" />
+    <state width="2518" height="384" key="GridCell.Tab.1.right/0.0.1440.900/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614030386282" />
     <state width="1398" height="322" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1613874032952" />
-    <state width="2518" height="322" key="GridCell.Tab.1.right/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1613871386928" />
+    <state width="2518" height="384" key="GridCell.Tab.1.right/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614027687145" />
+    <state width="2518" height="384" key="GridCell.Tab.1.right/0.25.1440.800/1440.25.2560.1415@1440.25.2560.1415" timestamp="1614029285973" />
     <state width="1398" height="138" key="GridCell.Tab.1.right/0.25.1440.800@0.25.1440.800" timestamp="1613861904891" />
+    <state x="2509" y="641" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1614026826602">
+      <screen x="1440" y="0" width="2560" height="1440" />
+    </state>
+    <state x="2509" y="641" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1440.800/1440.0.2560.1440@1440.0.2560.1440" timestamp="1614026826602" />
     <state x="2611" y="469" key="ftp.server.browser" timestamp="1613608157382">
       <screen x="1440" y="25" width="2560" height="1415" />
     </state>
     <state x="2611" y="469" key="ftp.server.browser/0.25.1440.800/1440.25.2560.1415@1440.25.2560.1415" timestamp="1613608157382" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/train_seg.py</url>
+          <line>185</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Nest_Detection_Baseline$train_recon.coverage" NAME="train_recon Coverage Results" MODIFIED="1614028370321" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Nest_Detection_Baseline$train_seg.coverage" NAME="train_seg Coverage Results" MODIFIED="1614030386246" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Nest_Detection_Baseline$patch.coverage" NAME="patch Coverage Results" MODIFIED="1613889860759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Nest_Detection_Baseline$train_net.coverage" NAME="train_net Coverage Results" MODIFIED="1613882666249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
