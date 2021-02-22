@@ -5,7 +5,6 @@ from torch.autograd import Variable
 from torch.utils.data import DataLoader
 from torch.utils.data.dataset import Dataset
 from torchvision import transforms
-from torch.utils.tensorboard import SummaryWriter
 import os, glob, cv2, time, copy, math
 import numpy as np
 from model import AutoEncoder, weights_init, weights_init_seg
