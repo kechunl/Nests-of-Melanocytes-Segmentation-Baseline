@@ -29,6 +29,7 @@ class SegDataset(Dataset):
         return len(self.image_list)
 
 
+# Path
 model_path = './Segmentation/checkpoint/AutoEncoder_Segmentation.pth'   # path of checkpoint to resume training from
 mask_output_dir = './Segmentation/patch_output'
 
