@@ -5,9 +5,10 @@ from torch.autograd import Variable
 from torch.utils.data import DataLoader
 from torch.utils.data.dataset import Dataset
 from torchvision import transforms
+from torchvision.utils import save_image
 import os, glob, cv2, time, copy, math
 import numpy as np
-from model import AutoEncoder, weights_init, weights_init_seg
+from model import AutoEncoder_Seg, weights_init
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0, 1"
 
@@ -32,6 +33,7 @@ class SegDataset(Dataset):
 # Path
 model_path = './Segmentation/checkpoint/AutoEncoder_Segmentation.pth'   # path of checkpoint to resume training from
 mask_output_dir = './Segmentation/patch_output'
+testset_dir = '/projects/patho1/Kechun/NestDetection/dataset/ROI/split/test'
 
 # Dataset and Dataloader
 data_dir = '/projects/patho1/Kechun/NestDetection/dataset/baseline/patch/val'
@@ -41,7 +43,7 @@ dataloader = DataLoader(dataset, batch_size=64, shuffle=False, num_workers=16)
 def test_model(model):
     # Iterate over data.
     for idx, data in enumerate(dataloader):
-        inputs, labels, paths = data
+        inputs, _, paths = data
         # print(inputs.size())
         # wrap them in Variable
         if torch.cuda.is_available():
@@ -54,19 +56,33 @@ def test_model(model):
 
         outputs = model(inputs)
         # save all masks
-        outputs = outputs.to("cpu").data.numpy().astype(np.uint8)
+        outputs = outputs.to("cpu").data
+        outputs = (outputs > 0.5).float()
         for i, path in enumerate(paths):
-            cv2.imwrite(os.path.join(mask_output_dir, os.path.basename(path)), outputs[i, :, :, :].squeeze())
+            save_image(outputs[i], os.path.join(mask_output_dir, os.path.basename(path)))
     return
 
 
 def stitch_mask():
-    # TODO
-    pass
+    test_img_list = glob.glob(os.path.join(testset_dir, '*.tif'))
+    assert len(test_img_list) > 0
+    test_patch_list = glob.glob(os.path.join(mask_output_dir, '*.png'))
+    for img_path in test_img_list:
+        bn = os.path.basename(img_path).split('.')[0]
+        # patch path for this image
+        patch_4img = [patch_path for patch_path in test_patch_list if bn in patch_path]
+        # Get image shape
+        original_img = cv2.cvtColor(cv2.imread(img_path), cv2.COLOR_BGR2RGB)
+        W, H = original_img.shape[0], original_img.shape[1]
+        del original_img
+        # Stitch it!
+        full_mask = np.zeros(W, H)
+
+
 
 
 # Model
-model = AutoEncoder()
+model = AutoEncoder_Seg()
 model = nn.DataParallel(model)
 model.cuda()
 

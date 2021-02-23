@@ -7,6 +7,7 @@ from torch.utils.data.dataset import Dataset
 from torchvision import transforms
 from torch.utils.tensorboard import SummaryWriter
 import os, glob, cv2, time, copy, math
+import numpy as np
 from model import AutoEncoder_Seg, weights_init
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0, 1"
@@ -27,7 +28,7 @@ class SegDataset(Dataset):
         img = cv2.cvtColor(cv2.imread(self.image_list[index]), cv2.COLOR_BGR2RGB)
         img = transforms.ToTensor()(img)
 
-        mask = cv2.imread(self.image_list[index].replace('patch','mask'), cv2.IMREAD_GRAYSCALE)
+        mask = 255 * cv2.imread(self.image_list[index].replace('patch','mask'), cv2.IMREAD_GRAYSCALE)
         mask = transforms.ToTensor()(mask)
         return img, mask
 
